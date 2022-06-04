@@ -5,7 +5,15 @@ package metaprogramming
 
 object App {
   def main(args: Array[String]): Unit = {
-    println(greeting())
+
+    val tuple = (10,"Hello",true)
+
+    def firstElementOfTuple(tuple : Tuple) = tuple match {
+      case head*:tail => Some(head) 
+      case EmptyTuple => None
+    }
+
+    println(s"${greeting()} ${firstElementOfTuple(tuple)}")
   }
 
   def greeting(): String = "Hello, world!"
